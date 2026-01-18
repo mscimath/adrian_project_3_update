@@ -1,0 +1,277 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+     <!-- Meta information for the page -->
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Sandra Szczepaniak - Beauty Expert & Eyelash Trainer</title>
+     <meta name="description" content="Sandra Szczepaniak offers professional eyelash styling, makeup services, and expert training for beauty professionals. Passionate about aesthetics and beauty education.">
+     <meta name="keywords" content="Sandra Szczepaniak, beauty salon, eyelash stylist, lash extensions, lash lifting, lash lamination, makeup artist, beauty trainer, eyelash trainer, beauty education, aesthetic services, beauty expert, linguist, lash courses, beauty industry, makeup services, cosmetic training">
+     <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+{% include "partials/header.html" %}  
+<div class="main-section-wrapper">
+    <div class="services-container">
+
+        <h1 class="services-title">Our Services</h1>
+        <div class="service-cards-container">
+        {% for service in services %}
+            <div class="service-card" style="background-image: url('{{ service.file_path }}');">
+
+                <h3>{{ service.title }}</h3>
+
+                {% if service.time %}
+                    <p><strong>Total duration:</strong> {{ service.time }} min</p>
+                {% endif %}
+
+                {% if service.subservice.all %}
+                <div class="subservice-list">
+
+                    {% for sub in service.subservice.all %}
+                    <div class="subservice-item">
+
+                        <div class="subservice-header">
+                            <span>{{ sub.title }}</span>
+                            <span>{{ sub.price }} zł</span>
+                        </div>
+
+                        {% if sub.description %}
+                        <div class="subservice-description">
+                            {{ sub.description }}
+                        </div>
+                        {% endif %}
+
+                        {% if sub.duration %}
+                        <div class="subservice-duration">
+                            ⏱ {{ sub.duration }} h
+                        </div>
+                        {% endif %}
+
+                        <a href="{% url 'calendar' %}" class="subservice-btn">Book now</a>
+
+                    </div>
+                    {% endfor %}
+
+                </div>
+                {% endif %}
+
+                <div class="subservice-btn">Book Now</div>
+
+            </div>
+            {% empty %}
+            <p>No services available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% include "partials/footer.html" %}
+<style>
+    /* ====================
+       Services Page 
+       ==================*/
+    
+    .services-container {
+        max-width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    /* ======
+        Title 
+       ======*/
+    .services-title {
+        text-align: center;
+        font-size: 2.4rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: #fff;
+        text-shadow: 0px 0px 3px #270049;
+    }
+
+/* ======================
+   Flex Wrap on the Cards
+   ======================*/
+    .service-cards-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;   
+        gap: 40px;                 
+        width: 100%;
+    }
+    /* ====================
+       Main Services Cards 
+       ==================== */
+    .service-card {
+        width: calc(50% - 80px);
+        background-size: cover;
+        background-position: center;
+        border: 3px solid #d4bf6e;
+        border-radius: 18px;
+        padding: 25px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 40px;
+        box-shadow: 0 5px 15px rgba(212, 191, 110, 0.25);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* ======================
+       Hover - Golden Glamour 
+       ====================== */
+
+    .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(212, 191, 110, 0.45);
+    border-color: #6a4b7c;
+}
+
+/* Text Gradient */
+.service-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(106, 75, 124, 0.1),
+        rgba(39, 0, 73, 0.27)
+    );
+    z-index: 1;
+}
+
+.service-card h3,
+.service-card p {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+.service-card h3 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px #270049;
+}
+
+.service-card p {
+    font-weight: 300;
+    font-size: 1.1rem;
+    max-width: 600px;
+    text-shadow: 1px 1px #270049;
+}
+
+/* --- Subservices List --- */
+.subservice-list {
+    margin-top: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Single Sub-service */
+.subservice-item {
+    background: rgba(106, 75, 124, 0.35);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 14px;
+    border: 2px solid #d4bf6e;
+    box-shadow: 0 5px 10px rgba(39, 0, 73, 0.25);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.subservice-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 12px #d4bf6e;
+}
+
+/* Subservice Header (title + price) */
+.subservice-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+/* Subservice Description */
+.subservice-description {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: #ffffffcc;
+    text-shadow: 1px 1px #270049;
+}
+
+/* Book Now Buttons */
+.subservice-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 3px 8px;
+    background-color: #6a4b7c;
+    border: 2px solid #d4bf6e;
+    color: white;
+    font-weight: 600;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.subservice-btn:hover {
+    color: #000;
+}
+
+.subservice-btn:hover {
+    background-color: white;
+    color: #6a4b7c;
+    border-color: #6a4b7c;
+    box-shadow: 0 0 15px 4px #d4bf6e88;
+}
+
+@media (max-width: 900px) {
+    .service-card {
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+// Interaktywny wybór gwiazdek
+const stars = document.querySelectorAll('.star-rating span');
+const ratingInput = document.getElementById('id_rating');
+
+stars.forEach(star => {
+    star.addEventListener('click', () => {
+        ratingInput.value = star.dataset.value;
+        stars.forEach(s => s.classList.remove('selected'));
+        star.classList.add('selected');
+        // podświetlamy wszystkie gwiazdki <= klikniętej
+        stars.forEach(s => {
+            if (s.dataset.value <= star.dataset.value) s.classList.add('selected');
+        });
+    });
+
+    star.addEventListener('mouseover', () => {
+        stars.forEach(s => s.classList.remove('hover'));
+        stars.forEach(s => {
+            if (s.dataset.value <= star.dataset.value) s.classList.add('hover');
+        });
+    });
+
+    star.addEventListener('mouseout', () => {
+        stars.forEach(s => s.classList.remove('hover'));
+    });
+});
+</script>
+
+
+  
+
+<script src="{% static 'main/js/column.js' %}"></script>
+<script src="{% static 'main/js/menu.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!-- templates/partials/footer.html -->
+{% load static %}
+
+<div id="scroll-button" class="button-container">
+
+    <div class="hamburger cross book-btn3" onclick="scrollToTop()">
+        <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" focusable="false">
+            <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+          </svg>
+    </div>
+  
+  </div>
+<!-- Footer section containing copyright and external contact links -->
+<footer id="footer">
+
+  <div class="footer-row">
+
+    <!-- LEFT -->
+    <div class="footer-left">
+      <p id="footer-text">
+        &copy; <span id="year"></span> VELORIA LONDON. All rights reserved.
+      </p>
+    </div>
+
+    <!-- CENTER -->
+    <div class="footer-center">
+      <a target="_blank" href="https://www.facebook.com/sandra.szczepaniak.3">
+        <img class="footer-icon" src="{% static 'main/img/social.png' %}">
+      </a>
+
+      <a target="_blank" href="https://www.instagram.com/sandraszczepaniak4/">
+        <img class="footer-icon" src="{% static 'main/img/instagram.png' %}">
+      </a>
+
+      <a href="tel:+447539488172">
+        <img class="footer-icon" src="{% static 'main/img/phone.png' %}">
+      </a>
+
+      <a href="mailto:sandraszczepaniak4@gmail.com">
+        <img class="footer-icon" src="{% static 'main/img/message.png' %}">
+      </a>
+    </div>
+
+    <!-- chatbot 
+    <div class="footer-right">
+      <div id="chat-icon">
+        <img class="chat_image" src="{% static 'main/img/chatbot.png' %}">
+      </div>
+    </div>-->
+
+  </div>
+
+</footer>
+
+<!-- Floating Chat Window 
+<div id="chat-window">
+  <div id="chat-messages"></div>
+  <div id="chat-input">
+    <input type="text" id="message" placeholder="Type a message...">
+    <button id="send-btn">Send</button>
+  </div>
+</div>-->

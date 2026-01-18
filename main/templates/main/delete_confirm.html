@@ -1,0 +1,44 @@
+ {% load static %}
+ <!DOCTYPE html>
+ <html>
+    <head>
+        <title>Delete review</title>
+        <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    </head>
+    <body>
+        {% include "partials/header.html" %}
+        <div class="review-page-container">
+            <div class="review-instance-container">
+                <h2>Delete review</h2>
+                <p>Are you sure you want to delete this review?</p>
+                <div class="review-preview">
+                    <p> 
+                        <strong>{{ review.name }}</strong>
+                        ({{ review.rating }}⭐)
+                        - {{ review.created_at|date:"Y-m-d H:i" }}
+                    </p>
+                    <p class="review-content">
+                        {{ review.content }}
+                    </p>
+                </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="email" value="{{ email }}">
+
+                    <div class="delete-actions">
+                        <button type="submit" class="book-btn">
+                            Yes, delete
+                        </button>
+
+                        <a href="{% url 'review_manage' %}" class="book-btn2">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% include "partials/footer.html" %}
+    </body>
+ </html>

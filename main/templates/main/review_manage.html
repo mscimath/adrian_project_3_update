@@ -1,0 +1,48 @@
+ {% load static %}
+ <!DOCTYPE html>
+ <html>
+    <head>
+        <title>Manage my reviews</title>
+        <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    </head>
+ </html>
+ <body> 
+    {% include "partials/header.html" %}
+    <div id="review-manage-container">
+        <h2>Manage your reviews</h2>
+        <p>Enter your email address.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="email" name="email" required placeholder="Your email">
+            <button class="book-btn" type="submit">Find my reviews</button>
+        </form>
+    </div>
+
+    {% include "partials/footer.html" %}
+
+    <style>
+    #review-manage-container{
+        min-height: 80vh;
+        margin-bottom: 2rem;
+        padding-bottom: 4rem;
+        background-color: #c9bfdd;
+        padding: 4rem 3rem 2rem 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    #review-manage-container input {
+        border: 1px solid gold;
+        border-radius: 1.05rem;
+        padding: 0.4rem;
+    }
+
+    #review-manage-container button{
+        margin-top: 2rem;
+    }
+    </style>
+ </body>
+ </html>

@@ -1,0 +1,248 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+     <!-- Meta information for the page -->
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Sandra Szczepaniak - Beauty Expert & Eyelash Trainer</title>
+     <meta name="description" content="Sandra Szczepaniak offers professional eyelash styling, makeup services, and expert training for beauty professionals. Passionate about aesthetics and beauty education.">
+     <meta name="keywords" content="Sandra Szczepaniak, beauty salon, eyelash stylist, lash extensions, lash lifting, lash lamination, makeup artist, beauty trainer, eyelash trainer, beauty education, aesthetic services, beauty expert, linguist, lash courses, beauty industry, makeup services, cosmetic training">
+     <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+{% include "partials/header.html" %} 
+
+<div class="review-page-container">
+<div class="reviews-container">
+    <h2>All Opinions</h2>
+{% for review in reviews %}
+    <div class="review-instance-container">
+        <p><strong class="review-name">{{ review.name }}</strong> <span class="review-star">({{ review.rating }}⭐)</span> - <span class="review-date">{{ review.created_at|date:"Y-m-d H:i" }}</span></p>
+        <p class="review-content">{{ review.content }}</p>
+    </div>
+    <hr>
+{% empty %}
+    <p>Brak opinii.</p>
+{% endfor %}
+</div>
+
+<form method="post" class="review-form">
+  {% csrf_token %}
+  <div class="review-form-data">
+    <p>
+      {{ form.name.label_tag }}<br>
+      {{ form.name}}
+    </p>
+    <p class="label-email">
+      {{ form.email.label_tag }}<br>
+      {{ form.email}}
+    </p>
+  </div>
+  <div class="review-form-message">
+    <p>
+      {{ form.content.label_tag }}<br>
+      {{ form.content}}
+    </p>
+    <p class="rating-title">Rating:</p>
+  <div class="star-rating">
+    <span data-value="1">&#9733;</span>
+    <span data-value="2">&#9733;</span>
+    <span data-value="3">&#9733;</span>
+    <span data-value="4">&#9733;</span>
+    <span data-value="5">&#9733;</span>
+  </div>
+  <input type="hidden" name="rating" id="id_rating" value="5">
+
+  <button type="submit" class="book-btn">Add review</button>
+</div>
+<div class="review-actions">
+    <a href="{% url 'review_manage' %}" class="book-btn">Remove a review I wrote.</a>
+</div>
+</form>
+
+</div>
+{% include "partials/footer.html" %}
+<style>
+.review-page-container {
+    margin-bottom: 2rem;
+    padding-bottom: 4rem;
+    background-color: #c9bfdd;
+    padding: 2rem 3rem;
+}
+.review-form {
+    width: 80%;           
+    margin: 2rem auto;      /* wycentrowanie */
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    gap: 4rem;
+    text-align: left;
+    justify-content: center; 
+}
+
+.review-form input, .review-form textarea {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.btn-submit {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: center;   /* przycisk na środku */
+}
+
+.btn-submit:hover { background-color: #45a049; }
+
+.star-rating {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.star-rating span {
+    cursor: pointer;
+    color: #ffffff;
+}
+.star-rating span.selected,
+.star-rating span:hover,
+.star-rating span:hover ~ span {
+    color: gold;
+}
+
+/*#645e70 | #4e475b*/
+
+/* Reviews */
+
+.review-instance-container {
+    margin: 2rem 0;
+}
+
+.review-name {
+    font-size: 2rem;
+}
+
+.review-star {
+    font-size: 2rem;
+
+}
+
+.review-date {
+    font-size: 0.7rem;
+    white-space: nowrap;
+}
+
+.review-content {
+    margin-top: 0.7rem;
+    font-style: italic;
+}
+
+.review-form-data, .review-form-message {
+    max-width: 50%;    
+    flex-direction: column;
+}
+
+.review-form-data {
+    padding-bottom: 1rem;
+}
+
+p.label-email {
+    margin-top: 2rem;
+}
+
+.rating-title {
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.review-actions {
+    margin-bottom: 2rem;
+    width: auto;
+}
+
+.review-actions .book-btn {
+    width: auto;
+}
+
+@media (max-width: 900px) {
+    .review-page-container {
+        padding: 2rem 3rem 4rem 3rem;
+    }
+    .review-form {
+        max-width: 100%;
+        width: 100%;           
+        margin: 2rem auto;     
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+    .review-form-data, .review-form-message {
+    max-width: 100%;
+    width: 100%;
+    }
+
+    .review-form-data {
+        padding-bottom: 0rem;
+    }
+
+    p.label-email {
+        margin-top: 1rem;
+    }
+    
+    .rating-title {
+        margin-top: 1rem;
+    }
+}
+
+/* Done:
+- reviews-container
+- form : flex for media flexibility
+*/
+</style>
+
+<script>
+// Interaktywny wybór gwiazdek
+const stars = document.querySelectorAll('.star-rating span');
+const ratingInput = document.getElementById('id_rating');
+
+stars.forEach(star => {
+    star.addEventListener('click', () => {
+        ratingInput.value = star.dataset.value;
+        stars.forEach(s => s.classList.remove('selected'));
+        star.classList.add('selected');
+        // podświetlamy wszystkie gwiazdki <= klikniętej
+        stars.forEach(s => {
+            if (s.dataset.value <= star.dataset.value) s.classList.add('selected');
+        });
+    });
+
+    star.addEventListener('mouseover', () => {
+        stars.forEach(s => s.classList.remove('hover'));
+        stars.forEach(s => {
+            if (s.dataset.value <= star.dataset.value) s.classList.add('hover');
+        });
+    });
+
+    star.addEventListener('mouseout', () => {
+        stars.forEach(s => s.classList.remove('hover'));
+    });
+});
+</script>
+
+
+  
+
+<script src="{% static 'main/js/column.js' %}"></script>
+<script src="{% static 'main/js/menu.js' %}"></script>
+</body>
+</html>
