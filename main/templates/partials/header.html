@@ -2,13 +2,9 @@
 {% load static %}
 <header class="top-nav">
         <img src="{% static 'main/img/tlo_header.jpg' %}" alt="header" class="header-img">
-
     <div class="nav-top">
-
-
       <div class="nav-top-elements">
         <div>
-
           <div class="mobile-hide hamburger" id="hamburger" onclick="openMENU()" >
             <div class="line"></div>
             <div class="line"></div>
@@ -18,7 +14,7 @@
         </div>
 
         <div class="logo-container" style="text-align: center;">
-          <img src="{% static 'main/img/veloria.png' %}" alt="Logo" width="250" style="height: auto;">
+          <img src="{% static 'main/img/veloria.png' %}" alt="Logo" width="200" style="height: auto;">
         </div>
 
         <div class="desktop-hide hamburger" id="hamburger" onclick="openMENU()" >
@@ -35,6 +31,15 @@
             <img style="transform: translateY(-50%);" class="overlay-image2 mobile-hide" src="{% static 'main/img/book_now2.png' %}" alt="BOOK NOW" onclick="window.location.href='{% url 'calendar' %}';">-->
         </div>
         </div>
+      </div>
+      <hr>
+      <div class="menu-desktop-row">
+        <a class="menu-desktop-item" href="{% url 'index' %}">Welcome</a>
+        <a class="menu-desktop-item" href="{% url 'services' %}">Services</a>
+        <a class="menu-desktop-item" href="{% url 'reviews_page' %}">Opinions</a>
+        <a class="menu-desktop-item" href="{% url 'blog' %}">Blog</a>
+        <a class="menu-desktop-item" href="{% url 'career' %}">Career</a>
+        <a class="menu-desktop-item" href="{% url 'contact' %}">Contact</a>
       </div>
 
     </div> 
