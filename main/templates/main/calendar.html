@@ -16,7 +16,7 @@
 {% include "partials/header.html" %}
 
 <div class="calendar">
-    <div></div>
+    <div class="empty"></div>
     {% for day in week_days %}
         <div class="calendar-header">{{ day|date:"D d.m" }}</div>
     {% endfor %}
@@ -33,8 +33,10 @@
                     
 					{% if slot.user == request.user %}
 						<a href="{% url 'manage_reservation' slot.id %}">{{ slot.service }}</a>
-					{% else %}
+					{% elif request.user.is_superuser %}
 						{{ slot.service }}
+					{% else %}
+						Reserved
 					{% endif %}
 					
                 {% else %}
