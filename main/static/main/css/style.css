@@ -291,6 +291,16 @@ text-shadow: 1px 1px 2px #270049;
     color: #6a4b7c46;
   }
 
+  .button-container {
+    position: fixed;
+    bottom: 7vh;
+    right: 20px;
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+    z-index: 1000; 
+  }
+
   .book-btn3 {
     border: 1px solid #cfa15a; 
     box-shadow: 0px 0px 3px #cfa15a;
@@ -298,7 +308,7 @@ text-shadow: 1px 1px 2px #270049;
     background-color: #27194c;
     color: white;
     fill: #f9f5c4;
-    padding: 5px 5px !important;
+    padding: 4px 4px !important;
     height: auto !important;
     margin: auto;
     font-family: 'Montserrat', sans-serif !important;
@@ -317,7 +327,7 @@ text-shadow: 1px 1px 2px #270049;
 
   .book-btn3:hover {
     animation-play-state: paused;
-    background-color: #ffffff; 
+    background-color: #cfa15a; 
     color: #27194c;
     fill: #27194c;
     border-color: #27194c;
@@ -326,6 +336,12 @@ text-shadow: 1px 1px 2px #270049;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
     cursor: pointer;
     font-weight:800 !important;
+  }
+
+  .scroll-svg {
+    display: block;
+    width: 30px;
+    height: 30px;
   }
 
   .book-btn4 {
@@ -923,15 +939,7 @@ gap: 10px;
 
 }
 
-  .button-container {
-    position: fixed;
-    bottom: 7vh;
-    right: 20px;
-    display: flex;
-    flex-direction: column; /* ustawia jeden pod drugim */
-    gap: 10px; /* odstęp między przyciskami */
-    z-index: 1000; /* na wierzchu */
-  }
+  
 
   .close-container {
     position: fixed;
@@ -1028,6 +1036,7 @@ select:focus, input[type="date"]:focus, input[type="time"]:focus {
   text-align: center;
   text-wrap: nowrap;
   color: rgb(212, 191, 110);
+  font-size: 1rem;
   background-image: linear-gradient(to bottom, #3e305d, #000);
   border-radius: 1.7rem;
   border-top: 1px solid #27194c;
@@ -1093,11 +1102,19 @@ select:focus, input[type="date"]:focus, input[type="time"]:focus {
     height: 3px;
     margin: 2px 0;
     border: 1px solid #d4bf6e !important;
+  }
 
+  .button-container {
+    bottom: 11vh;
   }
 
   .book-btn3 {
-    transform: translateY(-44px);
+    transform: translateY(-4px);
+  }
+
+  .scroll-svg {
+    width: 20px;
+    height: 20px;
   }
 
   /* Fixed footer positioning */
@@ -1147,6 +1164,25 @@ select:focus, input[type="date"]:focus, input[type="time"]:focus {
   bottom: 90%;
   left: 73%;
   transform: translateX(-50%) translateY(50%);
+}
+
+.overlay-image {
+  padding: 0.2rem 0.8rem;
+  font-size: 0.8rem !important;
+  text-align: center;
+  text-wrap: nowrap;
+  color: rgb(212, 191, 110);
+  font-size: 1rem;
+  background-image: linear-gradient(to bottom, #3e305d, #000);
+  border-radius: 1.7rem;
+  border-top: 1px solid #27194c;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  height: auto !important;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 3; /* tło */
 }
 
 }
