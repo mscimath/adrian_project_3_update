@@ -301,6 +301,19 @@ text-shadow: 1px 1px 2px #270049;
     z-index: 1000; 
   }
 
+  #scroll-button {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(30px);
+  }
+
+  #scroll-button.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0px);
+  }
+
   .book-btn3 {
     border: 1px solid #cfa15a; 
     box-shadow: 0px 0px 3px #cfa15a;
