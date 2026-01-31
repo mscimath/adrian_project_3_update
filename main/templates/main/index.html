@@ -13,66 +13,63 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-  <body> 
+<body> 
   {% include "partials/header.html" %}
 
   <!-- MAIN SERVICES SECTION -->
   <div class="main-section-wrapper">
 
-  <section class="main-section">
-    
-    <div class="left-photo box">
-      <div class="image-wrapper">
+    <section class="main-section">
 
-        <img class="image_panel" src="{% static 'main/img/sandra_salon2.png' %}" alt="This is me">
-        <a href="{% url 'calendar' %}" class="desktop-hide overlay-image mobile-hero-book-btn">
-          BOOK NOW
-        </a>
-        <!-- <img class="desktop-hide overlay-image fade image" src="{% static 'main/img/book_now.png' %}" alt="BOOK NOW" onclick="window.location.href='{% url 'calendar' %}';">
-        <img class="desktop-hide overlay-im age" src="{% static 'main/img/book_now2.png' %}" alt="BOOK NOW" onclick="window.location.href='{% url 'calendar' %}';">
-        <img class="desktop-hide overlay-image" src="{% static 'main/img/book_now3.png' %}" alt="BOOK NOW" onclick="window.location.href='{% url 'calendar' %}';">
-        <img class="desktop-hide overlay-image hover-image" src="{% static 'main/img/book_now4.png' %}" alt="BOOK NOW" onclick="window.location.href='{% url 'calendar' %}';"> -->
-       
-        <div class="overlay-text-wrapper">
-          <div class="marquee-container">
-            <div class="marquee">
-              <span style="font-weight: bold;">
-                ••• Discover your potential with me. I'm expert educator in eyelashes, aesthetic medicine and permanent makeup •••
-              </span>
-              <span style="font-weight: bold;">
-                ••• Discover your potential with me. I'm expert educator in eyelashes, aesthetic medicine and permanent makeup •••
-              </span>
+        <div class="left-photo box">
+          <div class="image-wrapper">
+
+            <img class="image_panel" src="{% static 'main/img/sandra_salon2.png' %}" alt="This is me">
+            <a href="{% url 'calendar' %}" class="desktop-hide overlay-image mobile-hero-book-btn">
+              BOOK NOW
+            </a>
+            <!-- <img class="desktop-hide overlay-image fade image" src="{% static 'main/img/book_now.png' %}" alt="BOOK NOW" onclick="window.location.href='{% url 'calendar' %}';">
+            <img class="desktop-hide overlay-im age" src="{% static 'main/img/book_now2.png' %}" alt="BOOK NOW" onclick="window.location.href='{% url 'calendar' %}';">
+            <img class="desktop-hide overlay-image" src="{% static 'main/img/book_now3.png' %}" alt="BOOK NOW" onclick="window.location.href='{% url 'calendar' %}';">
+            <img class="desktop-hide overlay-image hover-image" src="{% static 'main/img/book_now4.png' %}" alt="BOOK NOW" onclick="window.location.href='{% url 'calendar' %}';"> -->
+          
+            <div class="overlay-text-wrapper">
+              <div class="marquee-container">
+                <div class="marquee">
+                  <span style="font-weight: bold;">
+                    ••• Discover your potential with me. I'm expert educator in eyelashes, aesthetic medicine and permanent makeup •••
+                  </span>
+                  <span style="font-weight: bold;">
+                    ••• Discover your potential with me. I'm expert educator in eyelashes, aesthetic medicine and permanent makeup •••
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    
 
-    <div class="services-wrapper">
-      <div class="services-grid">
-    
-          {% for service in services %}
-          <div class="service-card card5 holographic-card" style="background-image: url('{{ service.file_path }}');">
-            <h3>{{ service.title }}</h3>
-            
-            
-            <!--<a href="{% url 'calendar' %}" class="book-btn" >
-              
-                 BOOK NOW <div style="font-size: 22px;">&#x276F;</div>
-            
-            </a>-->
+
+        <div class="services-wrapper">
+          <div class="services-grid">
+          
+              {% for service in services %}
+              <div class="service-card card5 holographic-card" style="background-image: url('{{ service.file_path }}');">
+                <h3>{{ service.title }}</h3>
+
+
+                <a href="{% url 'calendar' %}" class="book-btn" >
+
+                     BOOK NOW <div style="font-size: 22px;">&#x276F;</div>
+                
+                </a>
+              </div>
+              {% empty %}
+              No services.
+              {% endfor %}
           </div>
-          {% empty %}
-          No services.
-          {% endfor %}
-      </div>
-    </div>
-      </div>
-    </div>
-
-  </section>
-</div>
+        </div>
+    </section>
+  </div>
 
 
 <!--<div class="button-container">
@@ -90,5 +87,27 @@
 <script src="{% static 'main/js/column.js' %}"></script>
 <script src="{% static 'main/js/menu.js' %}"></script>
 <script src="{% static 'main/js/button.js' %}" defer></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".service-card");
+
+    cards.forEach(card => {
+        const btn = card.querySelector(".book-btn");
+        if (!btn) return;
+
+        card.addEventListener("mouseenter", () => {
+            btn.style.opacity = "1";
+            btn.style.pointerEvents = "auto";
+            btn.style.transform = "translateY(0)";
+        });
+
+        card.addEventListener("mouseleave", () => {
+            btn.style.opacity = "0";
+            btn.style.pointerEvents = "none";
+            btn.style.transform = "translateY(10px)";
+        });
+    });
+});
+</script>
 </body>
 </html>

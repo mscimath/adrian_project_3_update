@@ -232,6 +232,13 @@
     box-shadow: 0 0 15px 4px #d4bf6e88;
 }
 
+.service-card .subservice-btn {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
 @media (max-width: 900px) {
     .service-card {
         width: 100%;
@@ -240,30 +247,24 @@
 </style>
 
 <script>
-// Interaktywny wybór gwiazdek
-const stars = document.querySelectorAll('.star-rating span');
-const ratingInput = document.getElementById('id_rating');
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".service-card");
 
-stars.forEach(star => {
-    star.addEventListener('click', () => {
-        ratingInput.value = star.dataset.value;
-        stars.forEach(s => s.classList.remove('selected'));
-        star.classList.add('selected');
-        // podświetlamy wszystkie gwiazdki <= klikniętej
-        stars.forEach(s => {
-            if (s.dataset.value <= star.dataset.value) s.classList.add('selected');
+    cards.forEach(card => {
+        const btn = card.querySelector(".subservice-btn");
+        if (!btn) return;
+
+        card.addEventListener("mouseenter", () => {
+            btn.style.opacity = "1";
+            btn.style.pointerEvents = "auto";
+            btn.style.transform = "translateY(0)";
         });
-    });
 
-    star.addEventListener('mouseover', () => {
-        stars.forEach(s => s.classList.remove('hover'));
-        stars.forEach(s => {
-            if (s.dataset.value <= star.dataset.value) s.classList.add('hover');
+        card.addEventListener("mouseleave", () => {
+            btn.style.opacity = "0";
+            btn.style.pointerEvents = "none";
+            btn.style.transform = "translateY(10px)";
         });
-    });
-
-    star.addEventListener('mouseout', () => {
-        stars.forEach(s => s.classList.remove('hover'));
     });
 });
 </script>

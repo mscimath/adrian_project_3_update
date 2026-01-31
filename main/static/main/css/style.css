@@ -511,6 +511,13 @@ gap: 10px;
   font-weight: 500;
 }
 
+.service-card .book-btn {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
 .image-wrapper {
   position: relative;
   overflow: hidden;
