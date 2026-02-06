@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+     <!-- Meta information for the page -->
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Sandra Szczepaniak - Beauty Expert & Eyelash Trainer</title>
+     <meta name="description" content="Sandra Szczepaniak offers professional eyelash styling, makeup services, and expert training for beauty professionals. Passionate about aesthetics and beauty education.">
+     <meta name="keywords" content="Sandra Szczepaniak, beauty salon, eyelash stylist, lash extensions, lash lifting, lash lamination, makeup artist, beauty trainer, eyelash trainer, beauty education, aesthetic services, beauty expert, linguist, lash courses, beauty industry, makeup services, cosmetic training">
+     <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+{% include "partials/header.html" %} 
+
+<div class="about-page-container">
+    <div class="text">
+        <p>
+            My name is <span class="italic">Sandra Szczepaniak</span> and, privately, I am a proud mom of three
+wonderful children, while professionally – a passionate advocate of beauty
+and women’s strength. My journey in the beauty industry began in 2016,
+when my daughter was just a few months old. At that time, I was searching
+for an opportunity that would allow me to balance motherhood with personal
+growth and financial independence. That is how my business was born –
+something that over time became not only my profession, but also my true
+fulfillment.
+        </p>
+        <p>
+            Since 2019, I have been running my business and training courses in High
+Wycombe, Buckinghamshire, UK. I am <span class="italic">a certified trainer for Luxury Eye</span>, and
+my skills have been recognized multiple times in both online and live
+championships. The trophies I have earned proudly decorate my salon,
+serving as a reminder that passion and perseverance always lead to
+success.
+        </p>
+        <p>
+            I specialize in delivering accredited training courses, all rigorously
+verified for quality and content by Beauty Direct. My mission is not only
+to share technical knowledge, but also to inspire women to believe in
+themselves and their potential – so that every student leaves my training
+with confidence and readiness to achieve her dreams.
+        </p>
+        <p>
+            I still work daily with clients because I believe that, to be an effective
+trainer, you must live what you teach, stay up to date with industry
+trends, and always remain “in shape.” Thanks to this, I can share not only
+theory, but also practical, real-world experience straight from the
+stylist’s chair.
+        </p>
+        <p>
+            My motto? <span class="motto"> Beauty is confidence – and confidence opens the door to
+everything.</span>
+        </p>
+    </div>
+    <div class="picture">
+        <img src="{% static 'main/img/sandra3.jpg' %}" alt="Sandra">
+    </div>
+</div>
+{% include "partials/footer.html" %}
+<style>
+    .about-page-container {
+        display: flex;
+        height: 100vh;
+        padding-bottom: 2rem;
+        padding-left: 2rem;
+    }
+
+    .text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        line-height: 1.5rem;
+        gap: 1rem;
+    }
+
+    .text p .motto {
+        font-style: italic;
+        font-size: 1.1rem;
+    }
+
+    .text p .italic {
+        font-style: italic;
+        letter-spacing: 0.5px;
+    }
+
+    .picture {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .picture img {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+    }
+
+    @media (max-width: 900px) {
+        
+    }
+
+    @media (max-width: 768px) {
+
+    }
+
+</style>
+
+
+
+
+  
+
+<script src="{% static 'main/js/column.js' %}"></script>
+<script src="{% static 'main/js/menu.js' %}"></script>
+</body>
+</html>

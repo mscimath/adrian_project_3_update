@@ -376,3 +376,6 @@ def career(request):
 
 def contact(request):
     return render(request, 'main/contact.html')
+
+def about_me(request):
+    return render(request, 'main/about_me.html')
