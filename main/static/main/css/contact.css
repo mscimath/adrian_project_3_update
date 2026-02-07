@@ -96,6 +96,7 @@ body {
     letter-spacing: 6px;
     color: #ffd966;
     font-size: 1.4rem;
+    text-shadow: 0px 2px 5px #3a1b3c9a;
 }
 
 @media (max-width: 900px) {
