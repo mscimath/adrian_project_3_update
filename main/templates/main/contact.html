@@ -16,25 +16,25 @@
 </head>
 
 <body>
-{% include "partials/header.html" %}
-<div class="contact-container-wrapper">
-    <div class="contact-container">
-        <h2 class="contact-title">Contact Me</h2>
-        <div class="contact-content">
-            <p class="contact-email">
-                Send me an e-mail: <a href="mailto:sandra@email.com">sandra@email.com</a>
-            </p>
-            <p class="contact-phone">
-                Call me: <a href="tel:123456789">123-456-789</a>
-            </p>    
+    <div class="contact-page-wrapper">
+        {% include "partials/header.html" %}
+        <div class="contact-container-wrapper">
+            <div class="contact-container">
+                <h2 class="contact-title">Contact Me</h2>
+                <div class="contact-content">
+                    <p class="contact-email">
+                        Send me an e-mail: <span class="highlight"><a href="mailto:sandra@email.com">sandra@email.com</a></span>
+                    </p>
+                    <p class="contact-phone">
+                        Call me: <span class="highlight"><a href="tel:123456789">123-456-789</a></span>
+                    </p>    
+                    <div class="stars">★★★★★</div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-
-
-<!-- Footer section containing copyright and external contact links -->
-{% include "partials/footer.html" %}
+    <!-- Footer section containing copyright and external contact links -->
+    {% include "partials/footer.html" %}
 
 <script src="{% static 'main/js/column.js' %}"></script>
 <script src="{% static 'main/js/menu.js' %}"></script>
